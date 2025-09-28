@@ -1,0 +1,5 @@
+{
+  "source_fasta": "data/examples/small.fasta",
+  "n_sequences": 3,
+  "embedding_dim": 320
+}
