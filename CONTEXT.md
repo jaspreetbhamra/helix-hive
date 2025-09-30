@@ -162,6 +162,137 @@ uv run python -m agents.retriever constraints \
 - `uv run python tools/validate_constraints.py data/examples/expected_lysozyme_constraints.json data/cache/lysozyme_constraints.json`
 
 
+### MSA Deduplication and Taxonomic Balancing
+
+🧹 1. Sequence De-duplication (before MSA)
+- Why
+   - Removes exact duplicates or sequences that are > 95% identical.
+   - Keeps your alignment diverse, avoids overweighting one species.
+- How
+   - Use pairwise identity with Biopython.
+   - Keep first occurrence, drop near-duplicates.
+
+🌍 2. Taxonomic Balancing
+- Why
+   - Prevents bias toward one clade (e.g. all mammals).
+   - Ensures you have a representative mix across taxonomic groups.
+- How
+   - If your FASTA headers include species info (>LYSC_HUMAN), group by species or genus prefix.
+   - Subsample so each group contributes at most N sequences.
+
+```bash
+# With deduplication + balancing (default)
+uv run python -m agents.retriever msa \
+  --seq KVFGRCELAAAMKRHGL... \
+  --k 10 \
+  --tool clustalo
+
+# Disable deduplication
+uv run python -m agents.retriever msa \
+  --seq KVFGRCELAAAMKRHGL... \
+  --k 10 \
+  --tool clustalo --no-dedup
+
+```
+
+* Why This Matters
+
+- Deduplication prevents overcounting of near-identical sequences.
+- Taxonomic balancing ensures you don’t bias conservation toward one species.
+- Together → make entropy + consensus analysis biologically realistic.
+- Without these, your Design Agent might wrongly think “everything is conserved” just because you loaded 20 nearly identical chicken sequences.
+
+* Experiment
+TODO: Duplicate one of the homologs n times to make the effect clear eg chicken 5x
+```bash
+# 1. Build index
+uv run python -m agents.retriever build \
+  --fasta data/examples/lysozyme_homologs_with_dupes.fasta \
+  --out data/cache/lysozyme_index.npz
+
+# 2. Run MSA with default (dedup + balance on)
+uv run python -m agents.retriever msa \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQNRDVRQYVQGCGV \
+  --index data/cache/lysozyme_index.npz \
+  --k 10 \
+  --out data/cache/lysozyme_msa_dedup.fasta \
+  --tool clustalo
+
+# Analyze conservation
+uv run python -m agents.retriever analyze \
+  --msa data/cache/lysozyme_msa_dedup.fasta \
+  --out data/cache/lysozyme_cons_dedup.json
+
+# Extract constraints
+uv run python -m agents.retriever constraints \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQNRDVRQYVQGCGV \
+  --msa data/cache/lysozyme_msa_dedup.fasta \
+  --conservation data/cache/lysozyme_cons_dedup.json \
+  --out data/cache/lysozyme_constraints_dedup.json \
+  --conserved-mode percentile --percentile 5
+
+# Visualize
+uv run python -m agents.retriever visualize \
+  --json data/cache/lysozyme_cons_dedup.json \
+  --constraints data/cache/lysozyme_constraints_dedup.json \
+  --out data/cache/lysozyme_plot_dedup.png \
+  --top 6
+
+# 3. Run MSA without deduplication / balancing
+uv run python -m agents.retriever msa \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQNRDVRQYVQGCGV \
+  --index data/cache/lysozyme_index.npz \
+  --k 10 \
+  --out data/cache/lysozyme_msa_nodedup.fasta \
+  --tool clustalo \
+  --no-dedup --no-balance
+
+# Analyze conservation
+uv run python -m agents.retriever analyze \
+  --msa data/cache/lysozyme_msa_nodedup.fasta \
+  --out data/cache/lysozyme_cons_nodedup.json
+
+# Extract constraints
+uv run python -m agents.retriever constraints \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQYVQGCGV \
+  --msa data/cache/lysozyme_msa_nodedup.fasta \
+  --conservation data/cache/lysozyme_cons_nodedup.json \
+  --out data/cache/lysozyme_constraints_nodedup.json \
+  --conserved-mode percentile --percentile 5
+
+# Visualize
+uv run python -m agents.retriever visualize \
+  --json data/cache/lysozyme_cons_nodedup.json \
+  --constraints data/cache/lysozyme_constraints_nodedup.json \
+  --out data/cache/lysozyme_plot_nodedup.png \
+  --top 6
+
+```
+
+🔍 What to Compare
+- With dedup + balance:
+   - Entropy plot: only truly conserved positions (like catalytic residues) stay flat.
+   - Constraints: fewer “false” conserved sites, clearer biological signals.
+
+- Without dedup/balance (especially if you added chicken duplicates):
+   - Entropy plot: almost the whole sequence looks conserved.
+   - Constraints: huge list of “conserved sites” (like what you saw earlier).
+   - Misleading for Design Agent.
+
+🌐 Why This Test is Important
+This experiment demonstrates why bioinformatics pipelines spend so much time on redundancy filtering and clade balancing. Without it, the statistical signal is biased — and your downstream Design/Evaluator Agents make bad calls.
+
+After running the scripts above, run the following to visualize
+```bash
+uv run python tools/compare_conservation.py \
+  --dedup data/cache/lysozyme_cons_dedup.json \
+  --raw data/cache/lysozyme_cons_nodedup.json \
+  --dedup-constraints data/cache/lysozyme_constraints_dedup.json \
+  --raw-constraints data/cache/lysozyme_constraints_nodedup.json \
+  --out data/cache/lysozyme_compare.png
+```
+
+
 # Archived Explanation to get back to later - Generated by GPT
 
 

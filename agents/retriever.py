@@ -14,6 +14,7 @@ from Bio.Align import PairwiseAligner  # biopython
 from models.esm import embed_sequence_mean
 from utils.conservation import compute_conservation
 from utils.constraints import extract_constraints
+from utils.filter import balance_taxa, deduplicate_sequences
 from utils.io import read_fasta, validate_protein_sequence
 from utils.visualize import plot_conservation_logo
 
@@ -130,18 +131,28 @@ class RetrieverAgent:
         hits: List[RetrievalHit],
         out_fasta: str = "data/cache/alignment.fasta",
         tool: str = "clustalo",
+        dedup: bool = True,
+        balance: bool = True,
     ) -> str:
         """
-        Build an MSA using Clustal Omega (default) or MAFFT.
+        Build an MSA using Clustal Omega or MAFFT, with optional deduplication & taxonomic balancing.
         """
+        seqs = [("query", query)] + [(h.id, h.sequence) for h in hits]
+
+        if dedup:
+            seqs = deduplicate_sequences(seqs, identity_thresh=0.95)
+            print(f"[Retriever] Deduplicated → {len(seqs)} sequences")
+
+        if balance:
+            seqs = balance_taxa(seqs, max_per_taxon=2)
+            print(f"[Retriever] Taxonomic balancing → {len(seqs)} sequences")
+
         tmp_in = Path("data/cache/tmp_input.fasta")
         out_fasta = Path(out_fasta)
 
-        # Write input FASTA (query + hits)
         with tmp_in.open("w") as f:
-            f.write(f">query\n{query}\n")
-            for h in hits:
-                f.write(f">{h.id}\n{h.sequence}\n")
+            for sid, s in seqs:
+                f.write(f">{sid}\n{s}\n")
 
         if tool == "clustalo":
             cmd = ["clustalo", "-i", str(tmp_in), "-o", str(out_fasta), "--force"]
@@ -259,6 +270,10 @@ def _cli():
         default="clustalo",
         help="MSA tool to use",
     )
+    m.add_argument("--no-dedup", action="store_true", help="Disable deduplication")
+    m.add_argument(
+        "--no-balance", action="store_true", help="Disable taxonomic balancing"
+    )
 
     v = sub.add_parser("visualize", help="Visualize conservation logo from JSON")
     v.add_argument("--json", required=True, help="Input conservation.json")
@@ -280,7 +295,15 @@ def _cli():
     elif args.cmd == "msa":
         agent = RetrieverAgent(index_path=args.index)
         hits = agent.query(args.seq, top_k=args.k, with_identity=False)
-        agent.build_msa(args.seq, hits, out_fasta=args.out, tool=args.tool)
+        agent.build_msa(
+            args.seq,
+            hits,
+            out_fasta=args.out,
+            tool=args.tool,
+            dedup=not args.no_dedup,
+            balance=not args.no_balance,
+        )
+
     elif args.cmd == "analyze":
         agent = RetrieverAgent()
         agent.analyze_msa(args.msa, out_json=args.out)

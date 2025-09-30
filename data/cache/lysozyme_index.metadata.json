@@ -1,5 +1,5 @@
 {
-  "source_fasta": "data/examples/lysozyme_homologs.fasta",
-  "n_sequences": 6,
+  "source_fasta": "data/examples/lysozyme_homologs_with_dupes.fasta",
+  "n_sequences": 11,
   "embedding_dim": 320
 }
