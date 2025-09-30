@@ -1,0 +1,298 @@
+[
+  {
+    "position": 1,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 2,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 3,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 4,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 5,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 6,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 7,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 8,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 9,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 10,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 11,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 12,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 13,
+    "frequencies": {
+      "M": 0.75,
+      "P": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 14,
+    "frequencies": {
+      "K": 0.75,
+      "R": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 15,
+    "frequencies": {
+      "T": 0.75,
+      "G": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 16,
+    "frequencies": {
+      "A": 0.75,
+      "S": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 17,
+    "frequencies": {
+      "Y": 0.75,
+      "H": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 18,
+    "frequencies": {
+      "I": 0.75,
+      "M": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 19,
+    "frequencies": {
+      "A": 0.75,
+      "S": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 20,
+    "frequencies": {
+      "K": 0.75,
+      "S": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 21,
+    "frequencies": {
+      "Q": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 22,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 23,
+    "frequencies": {
+      "Q": 0.75,
+      "E": 0.25
+    },
+    "entropy": 0.8112781244591328
+  },
+  {
+    "position": 24,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 25,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 26,
+    "frequencies": {
+      "F": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 27,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 28,
+    "frequencies": {
+      "K": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 29,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 30,
+    "frequencies": {
+      "H": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 31,
+    "frequencies": {
+      "F": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 32,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 33,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 34,
+    "frequencies": {
+      "Q": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 35,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 36,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 37,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 38,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 39,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 40,
+    "frequencies": {
+      "W": 1.0
+    },
+    "entropy": -0.0
+  },
+  {
+    "position": 41,
+    "frequencies": {
+      "Q": 1.0
+    },
+    "entropy": -0.0
+  }
+]

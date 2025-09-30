@@ -16,6 +16,21 @@ Agentic Collaborative Protein Engineer
 1. `make index`
     - build a sample index from `data/examples/small.fasta`
 2. `make query`
+3. Test Queries
+```bash
+# Build index
+uv run python -m agents.retriever build --fasta data/examples/small.fasta
+
+# Run query
+uv run python -m agents.retriever query --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# Build MSA with Clustal Omega (default)
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# Build MSA with MAFFT
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5 --tool mafft
+
+```
 
 ### Design Agent
 1. `make design`

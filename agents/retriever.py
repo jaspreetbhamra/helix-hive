@@ -1,15 +1,21 @@
-# agents/retriever.py
 from __future__ import annotations
+
+import argparse
+import json
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
-import json
-import argparse
-import numpy as np
 
-from utils.io import read_fasta, validate_protein_sequence
-from models.esm import embed_sequence_mean
+import numpy as np
+from Bio import AlignIO
 from Bio.Align import PairwiseAligner  # biopython
+
+from models.esm import embed_sequence_mean
+from utils.conservation import compute_conservation
+from utils.constraints import extract_constraints
+from utils.io import read_fasta, validate_protein_sequence
+from utils.visualize import plot_conservation_logo
 
 
 @dataclass
@@ -93,7 +99,6 @@ class RetrieverAgent:
         idxs = np.argsort(-sims)[:top_k]
 
         hits: List[RetrievalHit] = []
-        # identities: List[float | None] = [None] * len(idxs)
 
         if with_identity:
             aligner = PairwiseAligner()
@@ -118,11 +123,94 @@ class RetrieverAgent:
 
         return hits
 
+    # ---------- MSA ----------
+    def build_msa(
+        self,
+        query: str,
+        hits: List[RetrievalHit],
+        out_fasta: str = "data/cache/alignment.fasta",
+        tool: str = "clustalo",
+    ) -> str:
+        """
+        Build an MSA using Clustal Omega (default) or MAFFT.
+        """
+        tmp_in = Path("data/cache/tmp_input.fasta")
+        out_fasta = Path(out_fasta)
+
+        # Write input FASTA (query + hits)
+        with tmp_in.open("w") as f:
+            f.write(f">query\n{query}\n")
+            for h in hits:
+                f.write(f">{h.id}\n{h.sequence}\n")
+
+        if tool == "clustalo":
+            cmd = ["clustalo", "-i", str(tmp_in), "-o", str(out_fasta), "--force"]
+            subprocess.run(cmd, check=True)
+        elif tool == "mafft":
+            cmd = ["mafft", str(tmp_in)]
+            with out_fasta.open("w") as fout:
+                subprocess.run(cmd, check=True, stdout=fout)
+        else:
+            raise ValueError(f"Unsupported MSA tool: {tool}")
+
+        print(f"[Retriever] MSA written to {out_fasta} using {tool}")
+        return str(out_fasta)
+
+    def analyze_msa(
+        self, msa_path: str, out_json: str = "data/cache/conservation.json"
+    ) -> str:
+        """
+        Compute conservation metrics (entropy + frequencies) from an MSA FASTA file.
+        """
+        alignment = AlignIO.read(msa_path, "fasta")
+        msa = [str(rec.seq) for rec in alignment]
+
+        results = compute_conservation(msa)
+
+        out_json = Path(out_json)
+        out_json.parent.mkdir(parents=True, exist_ok=True)
+        with out_json.open("w") as f:
+            json.dump(results, f, indent=2)
+
+        print(f"[Retriever] Conservation metrics saved to {out_json}")
+        return str(out_json)
+
+    def extract_constraints_from_msa(
+        self,
+        msa_path: str,
+        sequence: str,
+        conservation_json: str = "data/cache/conservation.json",
+        out_json: str = "data/cache/constraints.json",
+    ) -> str:
+        """
+        Given an MSA + conservation analysis, extract biological constraints.
+        """
+        import json
+
+        with open(conservation_json) as f:
+            conservation = json.load(f)
+
+        constraints = extract_constraints(sequence, conservation)
+
+        out_json = Path(out_json)
+        out_json.parent.mkdir(parents=True, exist_ok=True)
+        with out_json.open("w") as f:
+            json.dump(constraints, f, indent=2)
+
+        print(f"[Retriever] Constraints saved to {out_json}")
+        return str(out_json)
+
 
 # ---------- CLI ----------
 def _cli():
     parser = argparse.ArgumentParser("RetrieverAgent CLI")
     sub = parser.add_subparsers(dest="cmd", required=True)
+
+    a = sub.add_parser("analyze", help="Analyze MSA for conservation metrics")
+    a.add_argument("--msa", required=True, help="Input aligned FASTA")
+    a.add_argument(
+        "--out", default="data/cache/conservation.json", help="Output JSON file"
+    )
 
     b = sub.add_parser("build", help="Build embedding index from FASTA")
     b.add_argument("--fasta", required=True, help="Path to reference FASTA")
@@ -130,12 +218,54 @@ def _cli():
         "--out", default="data/cache/retriever_index.npz", help="Output index path"
     )
 
+    c = sub.add_parser(
+        "constraints", help="Extract biological constraints from MSA + conservation"
+    )
+    c.add_argument("--seq", required=True, help="Original protein sequence")
+    c.add_argument("--msa", required=True, help="Aligned FASTA file")
+    c.add_argument("--conservation", default="data/cache/conservation.json")
+    c.add_argument("--out", default="data/cache/constraints.json")
+    # new knobs
+    c.add_argument(
+        "--conserved-mode",
+        choices=["threshold", "percentile", "topk"],
+        default="percentile",
+    )
+    c.add_argument("--entropy-thresh", type=float, default=None)
+    c.add_argument("--percentile", type=float, default=5.0)
+    c.add_argument("--topk", type=int, default=None)
+    c.add_argument("--min-majority", type=float, default=0.9)
+    c.add_argument("--min-occupancy", type=float, default=0.8)
+
     q = sub.add_parser("query", help="Query top-k homologs")
     q.add_argument("--seq", required=True, help="Protein sequence (letters only)")
     q.add_argument("--k", type=int, default=5, help="Top-k")
     q.add_argument(
         "--index", default="data/cache/retriever_index.npz", help="Index path"
     )
+
+    m = sub.add_parser("msa", help="Build MSA for query + top-k hits")
+    m.add_argument("--seq", required=True, help="Protein sequence (letters only)")
+    m.add_argument("--k", type=int, default=5, help="Top-k")
+    m.add_argument(
+        "--index", default="data/cache/retriever_index.npz", help="Index path"
+    )
+    m.add_argument(
+        "--out", default="data/cache/alignment.fasta", help="Output aligned FASTA"
+    )
+    m.add_argument(
+        "--tool",
+        choices=["clustalo", "mafft"],
+        default="clustalo",
+        help="MSA tool to use",
+    )
+
+    v = sub.add_parser("visualize", help="Visualize conservation logo from JSON")
+    v.add_argument("--json", required=True, help="Input conservation.json")
+    v.add_argument(
+        "--out", default="data/cache/conservation_logo.png", help="Output PNG"
+    )
+    v.add_argument("--top", type=int, default=5, help="Top N residues to display")
 
     args = parser.parse_args()
     if args.cmd == "build":
@@ -147,6 +277,39 @@ def _cli():
         for h in hits:
             ident_pct = f"{h.identity * 100:.1f}%" if h.identity is not None else "n/a"
             print(f"{h.id}\tsim={h.similarity:.3f}\tident={ident_pct}")
+    elif args.cmd == "msa":
+        agent = RetrieverAgent(index_path=args.index)
+        hits = agent.query(args.seq, top_k=args.k, with_identity=False)
+        agent.build_msa(args.seq, hits, out_fasta=args.out, tool=args.tool)
+    elif args.cmd == "analyze":
+        agent = RetrieverAgent()
+        agent.analyze_msa(args.msa, out_json=args.out)
+    elif args.cmd == "visualize":
+        plot_conservation_logo(args.json, out_png=args.out, top_n=args.top)
+    elif args.cmd == "constraints":
+        agent = RetrieverAgent()
+        # load conservation json
+        import json
+
+        with open(args.conservation) as f:
+            conservation = json.load(f)
+        cons = extract_constraints(
+            args.seq,
+            conservation,
+            conserved_mode=args.conserved_mode,
+            entropy_thresh=args.entropy_thresh,
+            percentile=args.percentile,
+            topk=args.topk,
+            min_majority=args.min_majority,
+            min_occupancy=args.min_occupancy,
+        )
+        outp = Path(args.out)
+        outp.parent.mkdir(parents=True, exist_ok=True)
+        with outp.open("w") as f:
+            json.dump(cons, f, indent=2)
+        print(f"[Retriever] Constraints saved to {outp}")
+    else:
+        raise ValueError(f"Unknown command: {args.cmd}")
 
 
 if __name__ == "__main__":

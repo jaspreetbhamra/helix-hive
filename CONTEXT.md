@@ -44,6 +44,124 @@ You have a target protein (a string over the 20 amino acids). You want to change
 * Optional thermostable homolog shortlist (if your KPI is stability)
 
 
+
+### Build MSA in Retrieval Agent 
+Options to build MSA using either clustal or mafft
+```bash
+# Build index
+uv run python -m agents.retriever build --fasta data/examples/small.fasta
+
+# Run query
+uv run python -m agents.retriever query --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# Build MSA with Clustal Omega (default)
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# Build MSA with MAFFT
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5 --tool mafft
+
+```
+
+### Conservation analysis (entropy + per-position frequencies)
+
+Ccompute conservation metrics:
+- Per-position amino acid frequencies
+- Shannon entropy (lower = more conserved)
+
+This gives us the raw stats that later agents (Design, Evaluator) can use for constraint-aware mutations.
+
+
+```bash
+# Build index
+uv run python -m agents.retriever build --fasta data/examples/small.fasta
+
+# Build MSA (Clustal Omega)
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5 --out data/cache/alignment.fasta
+
+# Analyze conservation
+uv run python -m agents.retriever analyze --msa data/cache/alignment.fasta --out data/cache/conservation.json
+```
+
+Interpretation
+- Entropy = 0 → strictly conserved (likely critical residues).
+- High entropy → variable region (safe to mutate).
+- Frequencies → guide consensus-based mutations later.
+
+
+### Visualize conservation patterns after MSA analysis
+```bash
+# Build MSA
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# Analyze conservation
+uv run python -m agents.retriever analyze --msa data/cache/alignment.fasta --out data/cache/conservation.json
+
+# Visualize conservation
+uv run python -m agents.retriever visualize --json data/cache/conservation.json --out data/cache/conservation_logo.png --top 6
+
+```
+
+Interpretation:
+- Can see conserved positions at a glance (one letter dominates).
+- Variable positions will show multiple residues stacked.
+- Helps decide which residues are safe to mutate in the Design Agent.
+
+
+### Constraint Extraction 
+So you don’t just get statistics, but also biological insights that guide design
+
+We’ll implement these constraints locally (all lightweight):
+1. Highly conserved sites
+- From entropy: mark positions with entropy ≤ threshold (e.g. 0.1).
+- Likely functionally critical — avoid mutating. 
+2. Cysteines / Disulfides
+- Detect Cys (C) positions.
+- If multiple conserved cysteines → candidate disulfide bonds.
+3. N-linked Glycosylation motifs (N-X-[ST])
+- Regex in sequence: N[^P][ST]
+- Mark motif positions.
+4. Signal peptide heuristic
+- N-terminal hydrophobic stretch (~first 20–30 residues, ≥70% hydrophobic).
+- Use Kyte–Doolittle hydropathy index.
+5. Transmembrane spans (simple heuristic)
+- Scan windows of 19 residues, mark if hydrophobic index ≥ threshold.
+- (True TM predictors = heavy, but this gives a PoC).
+
+```bash
+# 1. Build MSA
+uv run python -m agents.retriever msa --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --k 5
+
+# 2. Analyze conservation
+uv run python -m agents.retriever analyze --msa data/cache/alignment.fasta --out data/cache/conservation.json
+
+# 3. Extract constraints
+uv run python -m agents.retriever constraints --seq MKTAYIAKQRQISFVKSHFSRQDILDLWQ --msa data/cache/alignment.fasta --conservation data/cache/conservation.json --out data/cache/constraints.json
+
+```
+
+
+* Run lysozyme_with_homologs_test.sh - to test the pipeline so far
+* Compare against examples/expected_lysozyme_constraints.json
+- What’s in there (and why)
+   - conserved_sites: the catalytic pair E35 and D52 are known to be highly conserved in lysozymes; even with a tiny homolog set, your entropy should flag these positions as low-entropy (≈0).
+   - cysteines: lysozymes carry 8 cysteines (disulfide bonds); positions above are for the exact chicken lysozyme sequence you’re using (1-based indexing).
+   - glycosylation_sites: no N-X-[ST] motif in the query sequence provided → [].
+   - signal_peptide: the sequence you’re using is the mature enzyme, not the prepro-peptide → false under our hydropathy heuristic.
+   - transmembrane_spans: lysozyme is secreted/soluble → none expected.
+
+```bash
+# Generate actual constraints
+uv run python -m agents.retriever constraints \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQNRDVRQYVQGCGV \
+  --msa data/cache/lysozyme_alignment.fasta \
+  --conservation data/cache/lysozyme_conservation.json \
+  --out data/cache/lysozyme_constraints.json
+
+```
+* Evaluate Constraints
+- `uv run python tools/validate_constraints.py data/examples/expected_lysozyme_constraints.json data/cache/lysozyme_constraints.json`
+
+
 # Archived Explanation to get back to later - Generated by GPT
 
 

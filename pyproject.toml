@@ -15,6 +15,7 @@ dependencies = [
     "chroma-hnswlib",       # local vector DB
     "requests",
     "numpy",
+    "matplotlib",
 ]
 
 [dependency-groups]  # uv-specific config

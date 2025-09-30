@@ -1,0 +1,16 @@
+{
+  "conserved_sites": [],
+  "cysteines": [
+    6,
+    30,
+    64,
+    76,
+    80,
+    94,
+    115,
+    127
+  ],
+  "glycosylation_sites": [],
+  "signal_peptide": false,
+  "transmembrane_spans": []
+}
