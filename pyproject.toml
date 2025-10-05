@@ -6,16 +6,17 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "biopython",
-    "torch",                # needed for esm/protgpt2
+    "torch", # needed for esm/protgpt2
     "transformers",
-    "fair-esm",                  # Meta’s ESM models - Note `esm` is the modern lib but doesn't have esm2 models, hence installing the older dist
+    "fair-esm", # Meta’s ESM models - Note `esm` is the modern lib but doesn't have esm2 models, hence installing the older dist
     "langchain",
     "langgraph",
     "streamlit",
-    "chroma-hnswlib",       # local vector DB
+    "chroma-hnswlib", # local vector DB
     "requests",
     "numpy",
     "matplotlib",
+    "scikit-bio>=0.7.0",
 ]
 
 [dependency-groups]  # uv-specific config

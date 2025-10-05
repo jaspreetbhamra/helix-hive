@@ -1,0 +1,79 @@
+[
+  {
+    "mutation": "F34W",
+    "position": 34,
+    "old_res": "F",
+    "new_res": "W",
+    "delta_pssm": 2.8253191872931303,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "R45Y",
+    "position": 45,
+    "old_res": "R",
+    "new_res": "Y",
+    "delta_pssm": 1.6749046260339542,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "F38Y",
+    "position": 38,
+    "old_res": "F",
+    "new_res": "Y",
+    "delta_pssm": 1.5325733881541432,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "G49R",
+    "position": 49,
+    "old_res": "G",
+    "new_res": "R",
+    "delta_pssm": 1.47523192747577,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "R68K",
+    "position": 68,
+    "old_res": "R",
+    "new_res": "K",
+    "delta_pssm": 0.8261968571631249,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "T47A",
+    "position": 47,
+    "old_res": "T",
+    "new_res": "A",
+    "delta_pssm": 0.45309046482858184,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  },
+  {
+    "mutation": "N37G",
+    "position": 37,
+    "old_res": "N",
+    "new_res": "G",
+    "delta_pssm": 0.27674486783750174,
+    "entropy": 0.9182958340544896,
+    "majority": 0.6666666666666666,
+    "reason": "consensus",
+    "notes": ""
+  }
+]

@@ -20,9 +20,9 @@ You have a target protein (a string over the 20 amino acids). You want to change
 - Annotations/motifs. Domains, catalytic residues, signal peptides, transmembrane spans, glycosylation motifs (N-X-S/T), low-complexity or aggregation-prone regions.
 
 
-## Workflow - Agents in the Multi-Agent System
+# Workflow - Agents in the Multi-Agent System
 
-### Retrieval Agent
+## Retrieval Agent
 
 **Goal:** Pull in “priors” from biology so design isn’t blind.
 
@@ -290,6 +290,45 @@ uv run python tools/compare_conservation.py \
   --dedup-constraints data/cache/lysozyme_constraints_dedup.json \
   --raw-constraints data/cache/lysozyme_constraints_nodedup.json \
   --out data/cache/lysozyme_compare.png
+```
+
+### PSSM Support
+
+```bash
+uv run python -m agents.retriever pssm \
+  --msa data/cache/lysozyme_alignment.fasta \
+  --out data/cache/lysozyme_pssm.json \
+  --alpha 1.0
+```
+
+
+## Design Agent
+
+**Goal:** : Phase 2 · Task 3: a consensus + constraint + PSSM–aware Design Agent that proposes ranked, biologically sensible single-site mutations.
+- Loads your alignment.fasta, conservation.json, constraints.json, pssm.json
+- Maps alignment columns → ungapped query positions
+- Proposes consensus-based mutations (only where query ≠ consensus)
+- Respects constraints (skips catalytic/conserved sites, cysteines, motifs, signal peptide, TM spans)
+- Scores each proposal with ΔPSSM (log-odds bits) and includes entropy/majority context
+- Ranks and returns top-N variants with reasons
+- Includes a CLI (design-consensus) to run end-to-end
+
+```bash
+# assuming you already produced these from the Retriever:
+# data/cache/lysozyme_alignment.fasta
+# data/cache/lysozyme_conservation.json
+# data/cache/lysozyme_pssm.json
+# data/cache/lysozyme_constraints.json
+
+uv run python -m agents.design \
+  --seq KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCQNRDVRQYVQGCGV \
+  --msa data/cache/lysozyme_alignment.fasta \
+  --conservation data/cache/lysozyme_conservation.json \
+  --pssm data/cache/lysozyme_pssm.json \
+  --constraints data/cache/lysozyme_constraints.json \
+  --top 20 \
+  --out data/cache/design_proposals.json
+
 ```
 
 

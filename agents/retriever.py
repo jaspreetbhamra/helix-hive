@@ -16,6 +16,7 @@ from utils.conservation import compute_conservation
 from utils.constraints import extract_constraints
 from utils.filter import balance_taxa, deduplicate_sequences
 from utils.io import read_fasta, validate_protein_sequence
+from utils.pssm import AA, compute_pssm_from_msa
 from utils.visualize import plot_conservation_logo
 
 
@@ -211,6 +212,29 @@ class RetrieverAgent:
         print(f"[Retriever] Constraints saved to {out_json}")
         return str(out_json)
 
+    def build_pssm_from_msa(
+        self, msa_path: str, out_json: str = "data/cache/pssm.json", alpha: float = 1.0
+    ) -> str:
+        """
+        Compute PSSM (log-odds, base-2) from MSA FASTA using real BG priors + Dirichlet smoothing.
+        """
+        alignment = AlignIO.read(msa_path, "fasta")
+        msa = [str(rec.seq) for rec in alignment]
+        positions, probs_cols, scores_cols = compute_pssm_from_msa(msa, alpha=alpha)
+
+        payload = {
+            "alphabet": list(AA),
+            "positions": positions,
+            "probabilities": probs_cols,  # per-column p(aa)
+            "pssm": scores_cols,  # per-column log2 odds
+        }
+        outp = Path(out_json)
+        outp.parent.mkdir(parents=True, exist_ok=True)
+        with outp.open("w") as f:
+            json.dump(payload, f, indent=2)
+        print(f"[Retriever] PSSM saved to {outp}")
+        return str(outp)
+
 
 # ---------- CLI ----------
 def _cli():
@@ -275,12 +299,20 @@ def _cli():
         "--no-balance", action="store_true", help="Disable taxonomic balancing"
     )
 
+    p = sub.add_parser("pssm", help="Build PSSM (log-odds) from an MSA FASTA")
+    p.add_argument("--msa", required=True, help="Aligned FASTA")
+    p.add_argument("--out", default="data/cache/pssm.json", help="Output JSON path")
+    p.add_argument(
+        "--alpha", type=float, default=1.0, help="Dirichlet smoothing strength (>=0)"
+    )
+
     v = sub.add_parser("visualize", help="Visualize conservation logo from JSON")
     v.add_argument("--json", required=True, help="Input conservation.json")
     v.add_argument(
         "--out", default="data/cache/conservation_logo.png", help="Output PNG"
     )
     v.add_argument("--top", type=int, default=5, help="Top N residues to display")
+    v.add_argument("--constraints", type=str, help="Path to constraints.json")
 
     args = parser.parse_args()
     if args.cmd == "build":
@@ -308,7 +340,12 @@ def _cli():
         agent = RetrieverAgent()
         agent.analyze_msa(args.msa, out_json=args.out)
     elif args.cmd == "visualize":
-        plot_conservation_logo(args.json, out_png=args.out, top_n=args.top)
+        plot_conservation_logo(
+            args.json,
+            out_png=args.out,
+            top_n=args.top,
+            constraints_json=args.constraints,
+        )
     elif args.cmd == "constraints":
         agent = RetrieverAgent()
         # load conservation json
@@ -331,6 +368,9 @@ def _cli():
         with outp.open("w") as f:
             json.dump(cons, f, indent=2)
         print(f"[Retriever] Constraints saved to {outp}")
+    elif args.cmd == "pssm":
+        agent = RetrieverAgent()
+        agent.build_pssm_from_msa(args.msa, out_json=args.out, alpha=args.alpha)
     else:
         raise ValueError(f"Unknown command: {args.cmd}")
 

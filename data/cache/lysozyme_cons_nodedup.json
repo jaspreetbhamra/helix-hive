@@ -1,0 +1,1348 @@
+[
+  {
+    "position": 1,
+    "frequencies": {
+      "K": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 2,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 3,
+    "frequencies": {
+      "F": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 4,
+    "frequencies": {
+      "G": 0.9090909090909091,
+      "E": 0.09090909090909091
+    },
+    "entropy": 0.4394969869215134,
+    "majority": 0.9090909090909091,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 5,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 6,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 7,
+    "frequencies": {
+      "E": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 8,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 9,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 10,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 11,
+    "frequencies": {
+      "A": 0.8181818181818182,
+      "Q": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 12,
+    "frequencies": {
+      "M": 0.8181818181818182,
+      "L": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 13,
+    "frequencies": {
+      "K": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 14,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 15,
+    "frequencies": {
+      "H": 0.8181818181818182,
+      "L": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 16,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 17,
+    "frequencies": {
+      "L": 0.8181818181818182,
+      "M": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 18,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 19,
+    "frequencies": {
+      "N": 0.8181818181818182,
+      "G": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 20,
+    "frequencies": {
+      "Y": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 21,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 22,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 23,
+    "frequencies": {
+      "Y": 0.8181818181818182,
+      "I": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 24,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 25,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 26,
+    "frequencies": {
+      "G": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 27,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 28,
+    "frequencies": {
+      "W": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 29,
+    "frequencies": {
+      "V": 0.8181818181818182,
+      "M": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 30,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 31,
+    "frequencies": {
+      "A": 0.8181818181818182,
+      "L": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 32,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 33,
+    "frequencies": {
+      "K": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 34,
+    "frequencies": {
+      "F": 0.6363636363636364,
+      "W": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 35,
+    "frequencies": {
+      "E": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 36,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 37,
+    "frequencies": {
+      "N": 0.6363636363636364,
+      "G": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 38,
+    "frequencies": {
+      "F": 0.6363636363636364,
+      "Y": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 39,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 40,
+    "frequencies": {
+      "T": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 41,
+    "frequencies": {
+      "Q": 0.9090909090909091,
+      "R": 0.09090909090909091
+    },
+    "entropy": 0.4394969869215134,
+    "majority": 0.9090909090909091,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 42,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 43,
+    "frequencies": {
+      "T": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 44,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 45,
+    "frequencies": {
+      "R": 0.6363636363636364,
+      "Y": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 46,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 47,
+    "frequencies": {
+      "T": 0.6363636363636364,
+      "A": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 48,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 0.36363636363636365,
+    "depth_non_gap": 4
+  },
+  {
+    "position": 49,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 50,
+    "frequencies": {
+      "G": 0.6363636363636364,
+      "R": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 51,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 52,
+    "frequencies": {
+      "T": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 53,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 54,
+    "frequencies": {
+      "Y": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 55,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 56,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 57,
+    "frequencies": {
+      "L": 0.8181818181818182,
+      "F": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 58,
+    "frequencies": {
+      "Q": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 59,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 60,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 61,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 62,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 63,
+    "frequencies": {
+      "W": 0.8181818181818182,
+      "Y": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 64,
+    "frequencies": {
+      "W": 0.8181818181818182,
+      "Y": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 65,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 66,
+    "frequencies": {
+      "N": 0.8181818181818182,
+      "D": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 67,
+    "frequencies": {
+      "D": 0.8181818181818182,
+      "N": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 68,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 69,
+    "frequencies": {
+      "R": 0.6363636363636364,
+      "K": 0.36363636363636365
+    },
+    "entropy": 0.9456603046006401,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 70,
+    "frequencies": {
+      "T": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 71,
+    "frequencies": {
+      "P": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 72,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 73,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 74,
+    "frequencies": {
+      "R": 0.8181818181818182,
+      "Y": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 75,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 76,
+    "frequencies": {
+      "L": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 77,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 78,
+    "frequencies": {
+      "N": 0.8181818181818182,
+      "H": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 79,
+    "frequencies": {
+      "I": 0.8181818181818182,
+      "L": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 80,
+    "frequencies": {
+      "P": 0.8181818181818182,
+      "S": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 81,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 82,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 83,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 84,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 85,
+    "frequencies": {
+      "L": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 86,
+    "frequencies": {
+      "S": 0.8181818181818182,
+      "Q": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 87,
+    "frequencies": {
+      "S": 0.8181818181818182,
+      "D": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 88,
+    "frequencies": {
+      "D": 0.8181818181818182,
+      "N": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 89,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 90,
+    "frequencies": {
+      "T": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 91,
+    "frequencies": {
+      "A": 0.8181818181818182,
+      "D": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 92,
+    "frequencies": {
+      "S": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 93,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 94,
+    "frequencies": {
+      "N": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 95,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 96,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 97,
+    "frequencies": {
+      "K": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 98,
+    "frequencies": {
+      "K": 0.8181818181818182,
+      "R": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 99,
+    "frequencies": {
+      "I": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 100,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 101,
+    "frequencies": {
+      "S": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 102,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 103,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 104,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 105,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 106,
+    "frequencies": {
+      "M": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 107,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 108,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 109,
+    "frequencies": {
+      "W": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 110,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 111,
+    "frequencies": {
+      "A": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 112,
+    "frequencies": {
+      "W": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 113,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 114,
+    "frequencies": {
+      "N": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 115,
+    "frequencies": {
+      "R": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 116,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 117,
+    "frequencies": {
+      "Q": 0.8181818181818182,
+      "K": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 118,
+    "frequencies": {
+      "N": 0.8181818181818182,
+      "G": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 119,
+    "frequencies": {
+      "R": 0.6363636363636364,
+      "L": 0.18181818181818182,
+      "T": 0.18181818181818182
+    },
+    "entropy": 1.3092966682370037,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 120,
+    "frequencies": {
+      "D": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 121,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 122,
+    "frequencies": {
+      "R": 0.6363636363636364,
+      "K": 0.18181818181818182,
+      "Q": 0.18181818181818182
+    },
+    "entropy": 1.3092966682370037,
+    "majority": 0.6363636363636364,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 123,
+    "frequencies": {
+      "Q": 0.8181818181818182,
+      "A": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 124,
+    "frequencies": {
+      "Y": 0.8181818181818182,
+      "W": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 125,
+    "frequencies": {
+      "V": 0.8181818181818182,
+      "I": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 126,
+    "frequencies": {
+      "Q": 0.8181818181818182,
+      "R": 0.18181818181818182
+    },
+    "entropy": 0.6840384356390417,
+    "majority": 0.8181818181818182,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 127,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 128,
+    "frequencies": {
+      "C": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 129,
+    "frequencies": {
+      "G": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  },
+  {
+    "position": 130,
+    "frequencies": {
+      "V": 1.0
+    },
+    "entropy": -0.0,
+    "majority": 1.0,
+    "occupancy": 1.0,
+    "depth_non_gap": 11
+  }
+]
